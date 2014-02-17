@@ -1,7 +1,16 @@
-export PROMPT_COMMAND=prompt_command_function
 export LC_CTYPE=en_US.UTF-8
 setxkbmap -option caps:none
 setxkbmap de
+
+#Color the promt
+color_default='\['`tput sgr0`'\]'
+color_red='\['`tput sgr0; tput setaf 1`'\]'
+color_green='\['`tput sgr0; tput setaf 2`'\]'
+color_yellow='\['`tput sgr0; tput setaf 3`'\]'
+color_light_blue='\['`tput sgr0; tput setaf 4`'\]'
+hostname=`hostname`
+
+export PS1="\n${color_green}#\# - ${hostname}:\w ${color_default}\n${color_red}->${color_default} "
 
 if [ -f ~/.mybashrc_private ]; then
     . ~/.mybashrc_private
