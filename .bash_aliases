@@ -1,0 +1,1 @@
+/home/till/.bash_aliases
