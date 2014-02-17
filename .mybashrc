@@ -1,1 +1,8 @@
-/home/till/.mybashrc
+export PROMPT_COMMAND=prompt_command_function
+export LC_CTYPE=en_US.UTF-8
+setxkbmap -option caps:none
+setxkbmap de
+
+if [ -f ~/.mybashrc_private ]; then
+    . ~/.mybashrc_private
+fi

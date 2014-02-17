@@ -1,1 +1,24 @@
-/home/till/.gitconfig
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+[alias]
+    changes=diff --name-status -r
+    st  = status -sb
+    ci  = commit
+    cim = commit -m
+    br  = branch
+    co  = checkout
+    df  = diff
+    lg  = log -p
+    aa  = add --all
+    son = show --oneline --name-only
+    lo  = log --oneline
+    kn  = cherry-pick
+    pick  = cherry-pick
+    l = log --pretty='%cr : %Cgreen %h %Creset : %Cred %aN <%aE> %n %x09 %s %n'
+[user]
+	email = till.kahlbrock@gmail.com
+	name = Till Kahlbrock
+[push]
+	default = simple
