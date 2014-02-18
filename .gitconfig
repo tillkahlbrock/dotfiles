@@ -21,4 +21,4 @@
 	email = till.kahlbrock@gmail.com
 	name = Till Kahlbrock
 [push]
-	default = simple
+	default = current
