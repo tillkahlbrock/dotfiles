@@ -1,6 +1,6 @@
 export LC_CTYPE=en_US.UTF-8
-setxkbmap -option caps:none
 setxkbmap de
+setxkbmap -option caps:none
 
 #Color the promt
 color_default='\['`tput sgr0`'\]'
