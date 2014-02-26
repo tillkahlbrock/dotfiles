@@ -5,6 +5,8 @@ set shiftwidth=2
 set expandtab
 set number
 
+autocmd BufRead,BufNewFile *.markdown setlocal spell
+
 "remove trailing whitespaces before save
 "autocmd BufWritePre * :%s/\s\+$//e
 
