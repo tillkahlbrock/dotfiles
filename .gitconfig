@@ -17,6 +17,7 @@
     kn  = cherry-pick
     pick  = cherry-pick
     l = log --pretty='%cr : %Cgreen %h %Creset : %Cred %aN <%aE> %n %x09 %s %n'
+    fo = fetch origin
 [user]
 	email = till.kahlbrock@gmail.com
 	name = Till Kahlbrock
