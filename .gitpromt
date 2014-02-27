@@ -1,0 +1,41 @@
+# don't set prompt if this is not interactive shell
+[[ $- != *i* ]]  &&  return
+
+color_default='\['`tput sgr0`'\]'
+color_red='\['`tput sgr0; tput setaf 1`'\]'
+color_green='\['`tput sgr0; tput setaf 2`'\]'
+color_yellow='\['`tput sgr0; tput setaf 3`'\]'
+color_light_blue='\['`tput sgr0; tput setaf 4`'\]'
+
+# make git-repositories have the branch and its status displayed in the bash prompt
+parse_git_branch ()
+{
+        if git rev-parse --git-dir >/dev/null 2>&1
+        then
+                gitver=$(git branch 2>/dev/null| sed -n '/^\*/s/^\* //p')
+                if git diff --quiet 2>/dev/null >&2
+                then
+                        gitver="- ${color_green}[${gitver}]${color_default} "
+                else
+                        gitver="- ${color_red}[${gitver}]${color_default} "
+                fi
+
+                stashcount=$(git stash list|wc -l)
+                if [ $stashcount -gt 0 ]
+                then
+                    gitver="${gitver} ${color_red}[${stashcount//[[:space:]]} stashed]${color_default}"
+                fi
+        else
+                gitver=""
+                return 0
+        fi
+}
+
+prompt_command_function ()
+{
+    parse_git_branch
+    export PS1="\n${color_green}#\# - `hostname`:\w ${gitver}${color_default}\n${color_red}->${color_default} "
+}
+
+export PROMPT_COMMAND=prompt_command_function
+
