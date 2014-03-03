@@ -6,6 +6,7 @@ set expandtab
 set number
 
 autocmd BufRead,BufNewFile *.markdown setlocal spell
+execute pathogen#infect()
 
 "remove trailing whitespaces before save
 "autocmd BufWritePre * :%s/\s\+$//e
