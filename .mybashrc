@@ -4,16 +4,25 @@ setxkbmap de
 
 #Color the promt
 color_default='\['`tput sgr0`'\]'
-color_red='\['`tput sgr0; tput setaf 1`'\]'
-color_green='\['`tput sgr0; tput setaf 2`'\]'
-color_yellow='\['`tput sgr0; tput setaf 3`'\]'
-color_light_blue='\['`tput sgr0; tput setaf 4`'\]'
+function _update_ps1() {
+  export PS1="$(~/bin/powerline-shell/powerline-shell.py $? 2> /dev/null)"
+}
 
-if [ -f ~/.gitpromt ]; then
-  . ~/.gitpromt
-else
-  export PS1="\n${color_green}#\# - `hostname`:\w ${color_default}\n${color_red}->${color_default} "
-fi
+export PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+
+JAVA_HOME="/usr/lib/jvm/jdk1.7.0/bin/java"
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=$PATH:$HOME/bin/elixir-0.10.2/bin
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+# added by travis gem
+[ -f /home/till/.travis/travis.sh ] && source /home/till/.travis/travis.sh
 
 if [ -f ~/.mybashrc_private ]; then
     . ~/.mybashrc_private
